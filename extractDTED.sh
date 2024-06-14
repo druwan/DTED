@@ -2,7 +2,7 @@
 
 # Extract files into extractedFiles directory, or change accordingly
 for file in tarFiles/*/*; do 
-		tar -xvf ${file} --include '*.dt2' --directory=extractedFiles
+		mkdir -p extractedFiles && tar -xvf ${file} --include '*.dt2' --directory=extractedFiles
 done
 
 # Create the folder structure and mv the files
@@ -15,5 +15,7 @@ for filePath in ./extractedFiles/Copernicus_DSM_10_*/DEM/*.dt2; do
 		# Create Dir if not exist
 		mkdir -p "./DTED/${dirname}"
 		# Move & rename the file
-		mv "$filePath" "./DTED/${dirname}/${filename}.dt2"
+		cp "$filePath" "./DTED/${dirname}/${filename}.dt2"
 done
+
+rm -rf extractedFiles
