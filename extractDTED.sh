@@ -13,10 +13,10 @@ done
 # Create the folder structure and mv the files
 for filePath in $PWD/extractedFiles/Copernicus_DSM_10_*/DEM/*.dt2; do
 		# Extract filename and dirname
-		# N57...
-		dirname=$(basename "$filePath" | awk -F '_' '{split($4, a, "."); print a[1]}')
 		# E001...
-		filename=$(basename "$filePath" | awk -F '_' '{split($6, a, "."); print a[1]}')
+		dirname=$(basename "$filePath" | awk -F '_' '{split($6, a, "."); print a[1]}')
+		# N57...
+		filename=$(basename "$filePath" | awk -F '_' '{split($4, a, "."); print a[1]}')
 		# Create Dir if not exist
 		mkdir -p "$PWD/DTED/${dirname}"
 		# Move & rename the file
